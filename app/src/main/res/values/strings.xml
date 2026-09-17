@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">AI Novelist &amp; Audiobook</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Studio</string>
+    <string name="nav_outline">Outline</string>
+    <string name="nav_console">Console</string>
+    <string name="nav_reader">Reader</string>
+    <string name="nav_audio_studio">Audio Studio</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard Screen -->
+    <string name="dashboard_title">AI Novelist Studio</string>
+    <string name="active_generation">Active Generation</string>
+    <string name="tokens_per_sec">%d tokens/s</string>
+    <string name="novel_library">Novel Library</string>
+    <string name="empty_library">No novels found. Create your first novel!</string>
+    <string name="create_novel">New Novel</string>
+    <string name="status_draft">Draft</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_generating">Generating...</string>
+
+    <!-- Outline Editor Screen -->
+    <string name="outline_title">Outline Editor</string>
+    <string name="novel_title_hint">Novel Title</string>
+    <string name="synopsis_hint">Enter synopsis (up to 5,000 characters)...</string>
+    <string name="select_genre">Select Genre Template</string>
+    <string name="chapters_list">Chapters Outline</string>
+    <string name="add_chapter">Add Chapter</string>
+    <string name="generate_outline">Generate AI Outline</string>
+    <string name="start_writing">Start Writing</string>
+    <string name="char_counter">%1$d / %2$d</string>
+
+    <!-- Live Console Screen -->
+    <string name="live_console_title">Live Streaming Console</string>
+    <string name="live_badge">Live</string>
+    <string name="live_streaming_header">Live streaming</string>
+    <string name="active_model">Active Model</string>
+    <string name="stop_generation">Stop</string>
+    <string name="continue_generation">Continue</string>
+
+    <!-- Reader Screen -->
+    <string name="reader_title">Novel Reader</string>
+    <string name="generate_audiobook">Generate Audiobook</string>
+    <string name="font_size">Font Size</string>
+    <string name="line_spacing">Line Spacing</string>
+    <string name="theme_day">Day</string>
+    <string name="theme_night">Night</string>
+    <string name="theme_sepia">Sepia</string>
+
+    <!-- Audio Studio & Voice Picker -->
+    <string name="audio_studio_title">Audio Studio</string>
+    <string name="now_playing">NOW PLAYING</string>
+    <string name="voice_picker_title">VieNeu-TTS Voice Studio</string>
+    <string name="select_voice">Select Voice</string>
+    <string name="search_voice">Search voice...</string>
+    <string name="preview_sample">Preview</string>
+    <string name="stop_sample">Stop</string>
+    <string name="region_north">North</string>
+    <string name="region_central">Central</string>
+    <string name="region_south">South</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_male">Male</string>
+    <string name="export_wav">Export WAV</string>
+    <string name="export_zip">Export ZIP</string>
+    <string name="export_success">Audio exported successfully</string>
+
+    <!-- Rotation Settings -->
+    <string name="settings_title">API Rotation &amp; Models</string>
+    <string name="api_keys_header">Gemini API Keys</string>
+    <string name="add_api_key">Add Key</string>
+    <string name="enter_api_key_hint">Paste AI Studio API Key</string>
+    <string name="model_priority_header">Model Priority</string>
+    <string name="quota_status_header">Live Quota Status</string>
+    <string name="language_switcher">Language / Ngôn ngữ</string>
+    <string name="lang_en">English</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+</resources>

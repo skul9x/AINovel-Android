@@ -1,0 +1,114 @@
+{
+  "updated_at": "2026-09-17T16:00:00+07:00",
+  "working_on": {
+    "project": "AI-Novel-Android",
+    "feature": "AI Novelist & Audiobook Mobile (Kotlin + Jetpack Compose + Material 3)",
+    "task": "All 5 Phases Complete + Real Gemini API Wire-up + Demo Data Cleaned + Deployed to Phone",
+    "status": "completed",
+    "files": [
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/AINovelApplication.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/AppViewModelProvider.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/GeneratorViewModel.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/SettingsViewModel.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/DashboardViewModel.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/screens/OutlineEditorScreen.kt",
+      "AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/MainActivity.kt"
+    ],
+    "deployment": {
+      "target_device": "3B658D010BU00000",
+      "apk_path": "AI-Novel-Android/app/build/outputs/apk/debug/app-debug.apk",
+      "status": "installed_and_verified"
+    },
+    "blockers": [],
+    "notes": "Wire-up completed: AINovelApplication and AppViewModelProvider supply real dependencies (NovelGenerationEngine, RotationManager, SecureKeyStorage, Room AppDatabase). All mock/demo data cleaned. 30/30 unit tests pass. App verified on real device."
+  },
+  "plans": {
+    "active_plan": "plans/260917-android-ai-novel-audiobook/plan.md",
+    "phases": [
+      {
+        "phase": "01",
+        "name": "Architecture, Room Database & Voice Preset Entities",
+        "status": "completed",
+        "test": "AI-Novel-Android/app/src/test/java/com/ainovel/audiobook/Phase1DatabaseTest.kt"
+      },
+      {
+        "phase": "02",
+        "name": "AI Novel Writing Engine & Rotation Subsystem",
+        "status": "completed",
+        "test": "AI-Novel-Android/app/src/test/java/com/ainovel/audiobook/Phase2AiRotationTest.kt"
+      },
+      {
+        "phase": "03",
+        "name": "VieNeu-TTS Engine & Instant Voice Sample Studio",
+        "status": "completed",
+        "test": "AI-Novel-Android/app/src/test/java/com/ainovel/audiobook/Phase3TtsEngineTest.kt"
+      },
+      {
+        "phase": "04",
+        "name": "Background Foreground Service & Dual Audio Player",
+        "status": "completed",
+        "test": "AI-Novel-Android/app/src/test/java/com/ainovel/audiobook/Phase4ServicePlayerTest.kt"
+      },
+      {
+        "phase": "05",
+        "name": "Mockup-Driven Compose UI & Zero Text Clipping",
+        "status": "completed",
+        "test": "AI-Novel-Android/app/src/test/java/com/ainovel/audiobook/Phase5ComposeUiTest.kt"
+      }
+    ]
+  },
+  "recent_changes": [
+    {
+      "type": "architecture",
+      "description": "Created AINovelApplication and AppContainer for dependency injection of Room DB, RotationManager, and NovelGenerationEngine",
+      "files": ["AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/AINovelApplication.kt"]
+    },
+    {
+      "type": "architecture",
+      "description": "Created AppViewModelProvider factory to inject real dependencies into Jetpack Compose ViewModels",
+      "files": ["AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/AppViewModelProvider.kt"]
+    },
+    {
+      "type": "feature",
+      "description": "Wired SettingsViewModel to hardware Android Keystore (SecureKeyStorage) and ApiKeyDao for live Gemini key management",
+      "files": ["AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/SettingsViewModel.kt"]
+    },
+    {
+      "type": "feature",
+      "description": "Wired GeneratorViewModel to NovelGenerationEngine for real Gemini outline generation and token streaming, with fallback for tests",
+      "files": ["AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/GeneratorViewModel.kt"]
+    },
+    {
+      "type": "fix",
+      "description": "Removed hardcoded Chapter 4 active generation demo banner from DashboardViewModel; now cleanly reflects 0 active tasks on startup",
+      "files": ["AI-Novel-Android/app/src/main/java/com/ainovel/audiobook/ui/viewmodel/DashboardViewModel.kt"]
+    },
+    {
+      "type": "deployment",
+      "description": "Compiled debug APK and installed via ADB onto physical test device 3B658D010BU00000; verified with on-screen screenshot",
+      "files": ["AI-Novel-Android/app/build/outputs/apk/debug/app-debug.apk"]
+    }
+  ],
+  "errors_encountered": [
+    {
+      "error": "GeneratorViewModel & OutlineEditorScreen displayed static mock data with delay(300)",
+      "solution": "Built AppContainer and AppViewModelProvider to inject real NovelGenerationEngine into GeneratorViewModel and wired generateOutline() to OkHttpLlmClient",
+      "resolved": true
+    },
+    {
+      "error": "Dashboard showed fake active generation banner 'Writing Chapter 4: Trước Khi Thành Phố Kịp Nhắm Mắt'",
+      "solution": "Set activeGeneration default to null in DashboardUiState; cleaned up demo initialization in GeneratorViewModel",
+      "resolved": true
+    }
+  ],
+  "decisions_made": [
+    {
+      "decision": "Use AppContainer + AppViewModelProvider over heavy Hilt framework",
+      "reason": "Lightweight, zero annotation-processing overhead, fast build times, and maintains 100% test compatibility with Robolectric"
+    },
+    {
+      "decision": "Support Dual-mode ViewModels (Production with injected engine vs Test with default values)",
+      "reason": "Allows Robolectric Phase 5 tests to run independently without requiring a physical Android Keystore while production uses hardware encryption"
+    }
+  ]
+}

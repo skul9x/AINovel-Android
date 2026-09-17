@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "schema_version": "1.2.0",
+    "awf_version": "4.0.2"
+  },
+  "project": {
+    "name": "AI Novelist & Audiobook (Writer's Atelier)",
+    "type": "Multi-Platform AI Writing Suite (Flask Web + Native Android Mobile)",
+    "status": "active",
+    "description": "An integrated workbench for co-writing novels and courseware with any LLM and producing studio-grade neural audiobooks. Features real-time token streaming console, sliding-window context, dynamic worldview, multi-key/multi-model Gemini rotation, VieNeu-TTS v3 Turbo offline neural speech synthesis, and an Android Kotlin Material 3 mobile application."
+  },
+  "platforms": {
+    "web": {
+      "path": ".",
+      "framework": "Flask 3.0+",
+      "language": "Python 3.8+",
+      "frontend": "Vanilla CSS + Vanilla JS + Jinja2 + SSE",
+      "port": 5000
+    },
+    "android": {
+      "path": "AI-Novel-Android/",
+      "language": "Kotlin 2.0.21 (JVM 21, compileSdk 35)",
+      "ui_framework": "Jetpack Compose + Material 3 (Material You Dynamic Colors)",
+      "persistence": "Room Database 2.6.1 (SQLite) + EncryptedSharedPreferences",
+      "concurrency": "Kotlin Coroutines 1.9.0 + StateFlow / SharedFlow",
+      "tts_engine": "VieNeu-TTS v3 Turbo (ONNX Runtime 1.20.0 XNNPACK FP32 + Sea-G2P JNI)",
+      "audio_format": "Lossless 48kHz 16-bit Mono RIFF WAV",
+      "background_execution": "Android Foreground Service with Partial WakeLock"
+    }
+  },
+  "llm_engine": {
+    "default_provider": "Google Gemini (OpenAI-compatible endpoint)",
+    "priority_models": [
+      "gemini-3.7-flash",
+      "gemini-3.5-flash-lite",
+      "gemini-3.8-flash",
+      "gemini-3.6-flash"
+    ],
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+    "rotation": {
+      "strategy": "Model-First, Key-Second",
+      "smart_rpm_cooldown_ms": 30000,
+      "rpd_exhausted_lock_ms": 108000000,
+      "timeout_protection_ms": 300000,
+      "zero_token_failover": true
+    }
+  },
+  "database_schema": {
+    "android_room": {
+      "tables": [
+        {"name": "novels", "description": "Stores novel projects, genres, languages (vi/en), status, and lore"},
+        {"name": "chapters", "description": "Stores individual chapter texts, word count, audio path, and generation status"},
+        {"name": "outlines", "description": "Stores generated outline texts and planned chapter titles"},
+        {"name": "audio_tracks", "description": "Stores synthesized audio files, sample rate (48kHz), duration, and RTF metrics"},
+        {"name": "voice_presets", "description": "Stores VieNeu-TTS voice profiles, regions (Bắc/Trung/Nam), styles, and sample audio URIs"},
+        {"name": "api_keys", "description": "Stores masked keys, SHA-256 hashes, and provider configs (encrypted in Keystore)"},
+        {"name": "quota_logs", "description": "Stores active cooldowns and 30-hour exhaustion locks per (model, keyHash) pair"}
+      ],
+      "relationships": "novels (1:N) -> chapters (1:1) -> audio_tracks; novels (1:1) -> outlines (CASCADE delete)"
+    }
+  },
+  "key_features": [
+    "Gemini multi-model multi-key rotation with smart 429 RPM/RPD distinction",
+    "Sliding-window context management (3 recent full chapters + distant summary + world lore)",
+    "6 ready-to-use writing templates (Web Novel, Literary, Hard Sci-Fi, Romance, Mystery, Custom)",
+    "Bilingual focus: Optimized exclusively for Vietnamese and English",
+    "VieNeu-TTS Voice Studio with instant sound sample previews",
+    "Zero Text Clipping Architecture for Compose UI across all font scales (1.0x to 2.0x)",
+    "Android Foreground Service with live notification progress and WakeLock",
+    "Dual Audio Player: 40-column real-time Waveform visualizer + lightweight voice sample previewer",
+    "Lossless 48kHz WAV audio export to Android MediaStore (Music/AINovelist) and Audiobook ZIP bundling"
+  ],
+  "conventions": [
+    "Phase plans in plans/ must be authored in English with a single comprehensive test per phase",
+    "After completing each phase, run only that single test for verification, then stop for user review",
+    "All Android source code resides strictly in AI-Novel-Android/",
+    "API keys are always hardware-encrypted and never stored in plain text"
+  ]
+}

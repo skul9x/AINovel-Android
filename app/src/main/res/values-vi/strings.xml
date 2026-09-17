@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Tiểu Thuyết AI &amp; Sách Nói</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Tổng quan</string>
+    <string name="nav_outline">Đề cương</string>
+    <string name="nav_console">Bảng điều khiển</string>
+    <string name="nav_reader">Đọc sách</string>
+    <string name="nav_audio_studio">Phòng thu âm</string>
+    <string name="nav_settings">Cài đặt</string>
+
+    <!-- Dashboard Screen -->
+    <string name="dashboard_title">AI Novelist Studio</string>
+    <string name="active_generation">Đang tạo nội dung</string>
+    <string name="tokens_per_sec">%d tokens/giây</string>
+    <string name="novel_library">Thư viện tác phẩm</string>
+    <string name="empty_library">Chưa có tác phẩm nào. Hãy tạo tiểu thuyết đầu tiên!</string>
+    <string name="create_novel">Tạo mới</string>
+    <string name="status_draft">Bản thảo</string>
+    <string name="status_completed">Hoàn thành</string>
+    <string name="status_generating">Đang viết...</string>
+
+    <!-- Outline Editor Screen -->
+    <string name="outline_title">Biên soạn đề cương</string>
+    <string name="novel_title_hint">Tiêu đề tiểu thuyết</string>
+    <string name="synopsis_hint">Nhập tóm tắt cốt truyện (tối đa 5.000 ký tự)...</string>
+    <string name="select_genre">Chọn thể loại tiểu thuyết</string>
+    <string name="chapters_list">Dàn ý chương hồi</string>
+    <string name="add_chapter">Thêm chương</string>
+    <string name="generate_outline">AI Lập dàn ý</string>
+    <string name="start_writing">Bắt đầu viết</string>
+    <string name="char_counter">%1$d / %2$d</string>
+
+    <!-- Live Console Screen -->
+    <string name="live_console_title">Bảng điều khiển trực tiếp</string>
+    <string name="live_badge">Trực tiếp</string>
+    <string name="live_streaming_header">Dòng nội dung trực tiếp</string>
+    <string name="active_model">Mô hình đang chạy</string>
+    <string name="stop_generation">Dừng lại</string>
+    <string name="continue_generation">Tiếp tục</string>
+
+    <!-- Reader Screen -->
+    <string name="reader_title">Đọc tác phẩm</string>
+    <string name="generate_audiobook">Tạo sách nói</string>
+    <string name="font_size">Cỡ chữ</string>
+    <string name="line_spacing">Giãn dòng</string>
+    <string name="theme_day">Sáng</string>
+    <string name="theme_night">Tối</string>
+    <string name="theme_sepia">Vàng ngà</string>
+
+    <!-- Audio Studio & Voice Picker -->
+    <string name="audio_studio_title">Phòng thu âm sách nói</string>
+    <string name="now_playing">ĐANG PHÁT</string>
+    <string name="voice_picker_title">VieNeu-TTS Voice Studio</string>
+    <string name="select_voice">Chọn giọng đọc</string>
+    <string name="search_voice">Tìm kiếm giọng đọc...</string>
+    <string name="preview_sample">Nghe Thử</string>
+    <string name="stop_sample">Dừng</string>
+    <string name="region_north">Miền Bắc</string>
+    <string name="region_central">Miền Trung</string>
+    <string name="region_south">Miền Nam</string>
+    <string name="gender_female">Nữ</string>
+    <string name="gender_male">Nam</string>
+    <string name="export_wav">Xuất file WAV</string>
+    <string name="export_zip">Xuất file ZIP</string>
+    <string name="export_success">Xuất âm thanh thành công</string>
+
+    <!-- Rotation Settings -->
+    <string name="settings_title">Xoay vòng API &amp; Mô hình</string>
+    <string name="api_keys_header">Danh sách khóa Gemini API</string>
+    <string name="add_api_key">Thêm khóa</string>
+    <string name="enter_api_key_hint">Dán mã khóa AI Studio</string>
+    <string name="model_priority_header">Thứ tự ưu tiên mô hình</string>
+    <string name="quota_status_header">Trạng thái hạn ngạch (Quota)</string>
+    <string name="language_switcher">Ngôn ngữ / Language</string>
+    <string name="lang_en">English</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="delete">Xóa</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+</resources>
